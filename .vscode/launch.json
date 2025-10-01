@@ -1,0 +1,41 @@
+{
+    // VS Code debug configurations for C/C++ (GDB/MinGW).
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C/C++: Launch (GDB/MinGW)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${input:programPath}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "C/C++: g++.exe build active file"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Build + Run (GDB/MinGW)",
+            "configurations": ["C/C++: Launch (GDB/MinGW)"]
+        }
+    ],
+    "inputs": [
+        {
+            "id": "programPath",
+            "type": "promptString",
+            "description": "Path to the built executable",
+            "default": "${workspaceFolder}/build/app.exe"
+        }
+    ]
+}
